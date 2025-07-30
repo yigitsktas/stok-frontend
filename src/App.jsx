@@ -15,13 +15,13 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   const fetchProducts = async () => {
-    const res = await axios.get('https://stok-api.onrender.com/api/products');
+    const res = await axios.get('https://stok-backend-production.up.railway.app/api/products');
     setProducts(res.data);
   };
 
   const handleLogin = async () => {
     try {
-      await axios.post('https://stok-api.onrender.com/api/login', { username, password });
+      await axios.post('https://stok-backend-production.up.railway.app/api/login', { username, password });
       setLoggedIn(true);
       fetchProducts();
     } catch {
@@ -34,7 +34,7 @@ function App() {
       alert("Tüm alanları doldurun.");
       return;
     }
-    await axios.post('https://stok-api.onrender.com/api/products', {
+    await axios.post('https://stok-backend-production.up.railway.app/api/products', {
       name,
       unit,
       stock: +stock,
@@ -51,7 +51,7 @@ function App() {
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`https://stok-api.onrender.com/api/products/${id}`);
+    await axios.delete(`https://stok-backend-production.up.railway.app/api/products/${id}`);
     fetchProducts();
   };
 
